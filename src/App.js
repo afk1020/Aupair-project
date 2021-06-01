@@ -4,50 +4,82 @@ import Navbar from './components/Navbar/index';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Footer from './components/Footer';
 import About from './components/pages/About';
 import Home from './components/pages/Home';
-import HostFamily from './components/pages/HostFamily';
+import HostFamily from './containers/HostFamily';
 import CreateListing from './components/CreateListing';
-import AuPair from './components/pages/AuPair'
+import AuPair from './containers/AuPair'
 import LoginForm from './components/pages/LoginForm';
 import Signup from './components/pages/Signup';
-function App() {
+import axios from 'axios';
 
-  const adminUser = {
+
+const aupairsURL = "http://localhost:9292/aupair";
+const hostFamiliesURL = "http://localhost:9292/hostFamily";
+
+
+class App extends React.Component {
+
+  adminUser =  {
     email:"admin@admin.com",
     password:"admin123"
   }
 
-  const [user, setUser] = useState({name: "", email: ""});
-  const [error, setError] = useState("");
-  const Login = details => {
+  state = {
+    user: {
+      name: "",
+      email: ""
+    },
+    error: "",
+    aupairs: [],
+    hostFamilies: []
+  }
+
+   Login = details => {
     console.log(details)
 
-    if (details.email == adminUser.email && details.password == adminUser.password){
+    if (details.email == this.adminUser.email && details.password == this.adminUser.password){
       console.log("Logged in");
-      setUser({
+      this.setState({
         name: details.name,
         email: details.email
       });
     } else {
       console.log("Details do not match!");
-      setError("Details do not match!")
+      this.setState("Details do not match!")
     }
   }
 
-  const Logout = () =>{
-    setUser({ name: "", email: ""});
+handleAuPairs = (auPairData) => {
+  this.setState({
+    aupairs: auPairData
+  
+  })
+}
+handleHostFamilies = (hostFamilyData) => {
+  this.setState({
+    hostFamilies: hostFamilyData
+  })
+}
+
+componentDidMount = () => {
+  axios.get(aupairsURL, {crossDomain: true}, {withCredentials: true})
+    .then((response) => this.handleAuPairs(response.data.aupair))
+    
+
+  axios.get(hostFamiliesURL, {crossDomain: true}, {withCredentials: true})
+    .then(response => this.handleHostFamilies(response.data))
+}
+
+Logout = () =>{
+    this.setState({name: "", email: ""});
     console.log("Logout");
   }
 
-  fetch("http://localhost:9292/test")
-  .then((res) => res.json())
-  .then(console.log); 
-
+  render(){
   return (
     <Router>
    <Navbar />
@@ -60,10 +92,10 @@ function App() {
     <About />
     </Route>
     <Route path="/host-families">
-    <HostFamily />
+    <HostFamily hostFamilyData={this.state.hostFamilies}/>
     </Route>
     <Route path="/Au-pair">
-    <AuPair />
+    <AuPair auPairData={this.state.aupairs}/>
     </Route>
     <Route path="/create-listing">
     <CreateListing />
@@ -73,20 +105,21 @@ function App() {
     </Route>
     <Route path="/sign-in">
     <div className ="App">
-      {(user.email != "") ? (
+      {(this.state.user.email != "") ? (
           <div className="welcome">
-          <h2>Welcome, <span>{user.name}</span></h2>
-          <button onClick={Logout}>Logout</button>
+          <h2>Welcome, <span>{this.state.user.name}</span></h2>
+          <button onClick={this.Logout}>Logout</button>
           </div>
       ) : (
 
-      <LoginForm Login={Login} error={error} />
+      <LoginForm Login={this.Login} error={this.error} />
       )}
     </div>
     </Route>
     </Switch>
    </Router>
   );
+}
 }
 
 export default App;

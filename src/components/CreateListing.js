@@ -1,17 +1,24 @@
 import React from 'react';
 import ListingForm from './ListingForm';
+import ListContainer from './ListContainer';
 import './Listing.css'
 
-class CreateListing extends React.Component {
+const CreateListing = () => {
+	const axios = require('axios')
 
-	render() {
+	// axios.post('https:sample-endpoint.com/user', {
+	// 	Name: 'Fred',
+	// 	Age: '23'
+	//   })
+	//   .then(function (response) {
+	// 	console.log(response);
+	//   })
 	return (
 		<div className="App">
         <ListingForm /> 
-        {/* <ListContainer
-        /> */}
+        <ListContainer
+        /> 
 		</div>
 	)
-}
 }
 export default CreateListing
