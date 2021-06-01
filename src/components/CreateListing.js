@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
+import ListingForm from './ListingForm';
+import './Listing.css'
 
-const CreateListing = () => {
+class CreateListing extends React.Component {
+
+	render() {
 	return (
-		<div>
-			
+		<div className="App">
+        <ListingForm /> 
+        {/* <ListContainer
+        /> */}
 		</div>
 	)
 }
-
+}
 export default CreateListing

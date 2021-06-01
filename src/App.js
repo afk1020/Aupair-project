@@ -7,14 +7,14 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Header from './components/Navbar/Header';
 import Footer from './components/Footer';
-import About from './components/About';
-import Home from './components/Home';
-import HostFamily from './components/HostFamily';
+import About from './components/pages/About';
+import Home from './components/pages/Home';
+import HostFamily from './components/pages/HostFamily';
 import CreateListing from './components/CreateListing';
-import AuPair from './components/AuPair'
-import LoginForm from './components/LoginForm';
+import AuPair from './components/pages/AuPair'
+import LoginForm from './components/pages/LoginForm';
+import Signup from './components/pages/Signup';
 function App() {
 
   const adminUser = {
@@ -51,7 +51,6 @@ function App() {
   return (
     <Router>
    <Navbar />
-   <Header />
    <Footer />
    <Switch>
     <Route exact path="/">
@@ -68,6 +67,9 @@ function App() {
     </Route>
     <Route path="/create-listing">
     <CreateListing />
+    </Route>
+    <Route path="/sign-up">
+    <Signup />
     </Route>
     <Route path="/sign-in">
     <div className ="App">
