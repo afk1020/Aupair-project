@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_06_02_162351) do
     t.string "nationality"
   end
 
-  create_table "hostfamilies", force: :cascade do |t|
+  create_table "families", force: :cascade do |t|
     t.string "lastname"
     t.integer "number_of_children"
     t.string "location"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_06_02_162351) do
 
   create_table "listings", force: :cascade do |t|
     t.integer "aupair_id"
+    t.integer "family_id"
   end
 
 end

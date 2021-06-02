@@ -1,5 +1,5 @@
 class Aupair < ActiveRecord::Base
 
-belongs_to :hostfamilies
+has_many :listings
 
 end 

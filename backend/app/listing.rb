@@ -1,4 +1,4 @@
 class Listing <ActiveRecord::Base
-
-	has_many :aupairs
+	belongs_to :aupair
+	belongs_to :family
 end 
