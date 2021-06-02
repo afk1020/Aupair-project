@@ -10,6 +10,9 @@ class Application
     elsif req.path.match(/Family/) 
       return [200, { 'Content-Type' => 'application/json' }, [ {:family => Family.all}.to_json ]]
     
+    elsif req.path.match(/Listing/) 
+      return [200, { 'Content-Type' => 'application/json' }, [ {:listing => Listing.all}.to_json ]]
+
     else
       resp.write "Path Not Found"
 
