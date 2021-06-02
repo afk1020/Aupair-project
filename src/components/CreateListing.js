@@ -1,17 +1,15 @@
 import React from 'react';
 import ListingForm from './ListingForm';
 import './Listing.css'
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-class CreateListing extends React.Component {
+const CreateListing = (props) => {
 
-	render() {
 	return (
 		<div className="App">
-        <ListingForm /> 
-        {/* <ListContainer
-        /> */}
+        <ListingForm addListing={props.addListing}/> 
 		</div>
 	)
-}
+
 }
 export default CreateListing

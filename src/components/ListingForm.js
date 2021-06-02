@@ -1,17 +1,36 @@
 import React from "react";
 import './Listing.css'
+import axios from 'axios'
 
 
 class ListingForm extends React.Component {
   state = {
-    name: "",
     image: "",
-    likes: 0
+    name: "",
+    age: "",
+    nationality: "",
+    certificates: "",
+    years_of_experience: ""
   };
   newValue = (event) => {
     event.preventDefault();
-    this.props.addToy(this.state)
+    this.props.addListing(this.state)
   };
+
+//   axios = require('axios')
+
+//    res = () => {
+//    axios.post('http://localhost:9292/Aupair', {
+//     image: this.state.image,
+//     name: this.state.name,
+//     age: this.state.age,
+//     nationality: this.state.nationality,
+//     certificates: this.state.certificates,
+//     years_of_experience: this.state.years_of_experience
+//   }).then(function (response) {
+//     console.log(response);
+//   })
+// }
 
   handleName = (event) => {
     this.setState({
@@ -23,6 +42,30 @@ class ListingForm extends React.Component {
       image: event.target.value,
     });
   };
+
+  handleAge = (event) =>{
+    this.setState({
+      age: event.target.value
+    })
+  }
+
+  handleNationality = (event) =>{
+    this.setState({
+      nationality: event.target.value
+    })
+  }
+  
+  handleCertificate = (event) =>{
+    this.setState({
+      certificates: event.target.value
+    })
+  }
+  
+    handleExperience = (event) =>{
+      this.setState({
+        years_of_experience: event.target.value
+      })
+    }
 
   render() {
     return (
@@ -41,38 +84,38 @@ class ListingForm extends React.Component {
           <br />
           <input
             type="text"
-            name="image"
+            name="age"
             placeholder="Enter your age..."
             className="input-text"
-            value={this.state.image}
-            onChange={this.handleImage}
+            value={this.state.age}
+            onChange={this.handleAge}
           />
           <br />
 		  <input
             type="text"
-            name="image"
+            name="nationality"
             placeholder="Enter your nationality..."
             className="input-text"
-            value={this.state.image}
-            onChange={this.handleImage}
+            value={this.state.nationality}
+            onChange={this.handleNationality}
           />
           <br />
 		  <input
             type="text"
-            name="image"
+            name="certificates"
             placeholder="Enter your certificates..."
             className="input-text"
-            value={this.state.image}
-            onChange={this.handleImage}
+            value={this.state.certificates}
+            onChange={this.handleCertificate}
           />
           <br />
 		  <input
             type="text"
-            name="image"
+            name="experience"
             placeholder="Enter years of experience..."
             className="input-text"
-            value={this.state.image}
-            onChange={this.handleImage}
+            value={this.state.years_of_experience}
+            onChange={this.handleExperience}
           />
           <br />
 		  <input
@@ -89,6 +132,7 @@ class ListingForm extends React.Component {
             name="submit"
             value="Create New Listing"
             className="submit"
+            onClick={()=> this.props.addListing}
           />
 		  </div>
 		  </div>
