@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_02_145434) do
+ActiveRecord::Schema.define(version: 2021_06_02_162351) do
 
   create_table "aupairs", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 2021_06_02_145434) do
     t.string "lastname"
     t.integer "number_of_children"
     t.string "location"
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.integer "aupair_id"
   end
 
 end

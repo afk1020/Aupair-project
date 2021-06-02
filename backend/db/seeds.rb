@@ -5,5 +5,5 @@ Aupair.destroy_all
 end 	
 
 10.times do 
-	HostFamily.create(lastname: Faker::Name.name, number_of_children: rand(1..5), location: Faker::Address.state)
+HostFamily.create(lastname: Faker::Name.name, number_of_children: rand(1..5), location: Faker::Address.state)
 end 
