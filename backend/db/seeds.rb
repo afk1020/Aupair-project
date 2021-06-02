@@ -5,6 +5,6 @@ Family.destroy_all
  Aupair.create(name: Faker::Name.name_with_middle, age: rand(18..45), nationality: Faker::Address.country, years_of_experience: rand(0..5),)
 end 	
 
-10.times do 
-Family.create(lastname: Faker::Name.name, number_of_children: rand(1..5), location: Faker::Address.state)
+5.times do 
+Family.create(fullname: Faker::Name.name_with_middle, aupair_name: Faker::Name.name_with_middle, salary: rand(12000..45000), start: Faker::Date.forward(days: 23), number_of_children: rand(1..5))
 end 
