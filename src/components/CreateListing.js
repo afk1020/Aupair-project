@@ -1,24 +1,15 @@
 import React from 'react';
 import ListingForm from './ListingForm';
-import ListContainer from './ListContainer';
 import './Listing.css'
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-const CreateListing = () => {
-	const axios = require('axios')
+const CreateListing = (props) => {
 
-	// axios.post('https:sample-endpoint.com/user', {
-	// 	Name: 'Fred',
-	// 	Age: '23'
-	//   })
-	//   .then(function (response) {
-	// 	console.log(response);
-	//   })
 	return (
 		<div className="App">
-        <ListingForm /> 
-        <ListContainer
-        /> 
+        <ListingForm addListing={props.addListing}/> 
 		</div>
 	)
+
 }
 export default CreateListing
