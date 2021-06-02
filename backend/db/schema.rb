@@ -10,13 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_29_155858) do
+ActiveRecord::Schema.define(version: 2021_06_02_145434) do
 
   create_table "aupairs", force: :cascade do |t|
     t.string "name"
     t.integer "age"
     t.integer "years_of_experience"
     t.string "nationality"
+  end
+
+  create_table "hostfamilies", force: :cascade do |t|
+    t.string "lastname"
+    t.integer "number_of_children"
+    t.string "location"
   end
 
 end

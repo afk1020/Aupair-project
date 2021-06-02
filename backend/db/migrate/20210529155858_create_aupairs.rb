@@ -4,7 +4,7 @@ class CreateAupairs < ActiveRecord::Migration[5.2]
 			t.string :name
 			t.integer :age
 			t.integer :years_of_experience
-      t.string :nationality
+      		t.string :nationality
 		end 
   end
 end
