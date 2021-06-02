@@ -6,5 +6,5 @@ Family.destroy_all
 end 	
 
 5.times do 
-Family.create(fullname: Faker::Name.name_with_middle, aupair_name: Faker::Name.name_with_middle, salary: rand(12000..45000), start: Faker::Date.forward(days: 23), number_of_children: rand(1..5))
+Family.create(fullname: Faker::Name.name, aupair_name: Faker::Name.name_with_middle, salary: rand(12000..45000), start: Faker::Date.forward(days: 23), number_of_children: rand(2..3))
 end 
