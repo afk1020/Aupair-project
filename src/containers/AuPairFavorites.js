@@ -1,15 +1,19 @@
+
 import React from 'react'
 import AuPairCard from '../components/AuPairCard.js';
 
-const AuPair = (props) => {
+const AuPairFavorites = (props) => {
+  
     return(
-
-        <div className="aupair_Collection">
-           {props.auPairData.map(auPair => {
+      
+        <div className="aupair_Favorites">
+           {props.favoriteData.map(auPair => {
             return <AuPairCard
             auPair ={auPair}
             key = {auPair.id}
-            handleClick={props.addFavorite}
+            favoriteId ={auPair.id}
+            handleClick ={props.removeFromFavorites}
+          
             />
         
         })}
@@ -19,4 +23,4 @@ const AuPair = (props) => {
           
     }
 
-export default AuPair;
+export default AuPairFavorites;

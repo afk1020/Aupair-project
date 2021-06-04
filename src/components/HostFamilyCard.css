@@ -1,6 +1,5 @@
 
-
-.image-container img{
+.img-container img{
 	overflow: hidden;
 	height: 200px;
 	justify-content: center;
@@ -32,12 +31,11 @@ justify-content: center;
 
 .btnn button{
 	padding: 0.5rem;
-	background-color: #1B9CFC;
+	background-color: white;
 	border: none;
 	transition: 0.2s;
 	margin-bottom: 0.5rem;
 	border-radius: 3px;
-
 }
 
 .btnn button:hover{
@@ -46,18 +44,18 @@ justify-content: center;
 
 a{
 	text-transform: uppercase;
-	color: #FFCE00 50%;
+	color: #1B9CFC;
 	text-decoration: none;
 	font-weight: bold;
 } 
 
-.aupair_Collection{
+.hostFamily-Collection{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
   }
   
-  .aupair-card{
+  .hostfamily-container{
 	box-shadow: 0px 0px 15px -5px;
 	transition: 0.3s;
 	animation: ease-in;
@@ -70,5 +68,11 @@ a{
   	flex-wrap: wrap;
   	justify-content: center;
   }
-
- 
+/* .card-container{
+width: 300px;
+overflow: hidden;
+box-shadow: 0px 0px 15px -5px;
+transition: 0.3;
+animation: ease-in;
+justify-content: space-between;
+  } */

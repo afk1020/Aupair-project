@@ -27,7 +27,7 @@ class AuPairCard extends Component {
   ]
     render() {
     return (
-      <div className="aupair-card" id={this.props.auPair.id}>
+      <div className="aupair-card" key={this.props.auPair.id}>
         <div className="image-container">
         <img src={`${this.aupairArray[Math.floor(Math.random()*this.aupairArray.length)]}`}></img>
       </div>
@@ -40,14 +40,19 @@ class AuPairCard extends Component {
         <p><span style={{fontWeight: "bold"}}>Nationality: </span>{this.props.auPair.nationality} </p>
         <p><span style={{fontWeight: "bold"}}>Years of Experience: </span> {this.props.auPair.years_of_experience}  </p>
       </div>
-      <div className="btnn">
+      <div className="btnn" >
       <Link to='/create-listing'>
-          <button style={{marginTop: "10px"}}>
+          <button>
             <a>
               Show Interest
             </a>
           </button>
         </Link>
+
+        <button style={{marginLeft: "10px", marginTop: "10px"}} onClick={()=>this.props.handleClick(this.props.auPair)}>
+        <a>Favorite ⭐️ </a>
+        </button>
+
       </div>
       </div>
       </div>
