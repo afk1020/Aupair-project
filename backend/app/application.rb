@@ -18,11 +18,22 @@ class Application
 
     elsif req.path.match(/Favorite/) 
       if req.post? 
+        #binding.pry
         rawData = JSON.parse(req.body.read)
-        newFavorite = Favorite.create(name:rawData['favorite'])
+        newFavorite = Favorite.create(family_id:Family.first.id, aupair_id:rawData['id'])
+      
         return [200, { 'Content-Type' => 'application/json' }, [ newFavorite.to_json ]]
       end
-      return [200, { 'Content-Type' => 'application/json' }, [ {:favorite => Favorite.all}.to_json ]]
+      #elsif req.path.match(/Favorite/) 
+      collection=[]
+      Favorite.all.each do |result|
+        hash={
+          favorite: result,
+          aupair: result.aupair
+        }
+        collection << hash
+      end
+      return [200, { 'Content-Type' => 'application/json' }, [ {:favorite => collection}.to_json ]]
     else
       resp.write "Path Not Found"
 
