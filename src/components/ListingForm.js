@@ -4,7 +4,20 @@ import axios from 'axios'
 
 
 class ListingForm extends React.Component {
-
+  state = {
+    image: "",
+    fullname: "",
+    aupair_name: "",
+    salary: "",
+    start: "",
+    number_of_children: ""
+  };
+  newValue = (event) => {
+    event.preventDefault();
+    this.props.addListing(this.state)
+    this.setState({image: '', fullname: '', salary: '', start: '', number_of_children: '', aupair_name: ''})
+    
+  };
 
 //   axios = require('axios')
 
@@ -21,35 +34,40 @@ class ListingForm extends React.Component {
 //   })
 // }
 
-  // handleName = (event) => {
-  //   this.setState({
-  //     name: event.target.value,
-  //   });
-  // };
-  // handleImage = (event) => {
-  //   this.setState({
-  //     image: event.target.value,
-  //   });
-  // };
+  handleName = (event) => {
+    this.setState({
+      fullname: event.target.value,
+    });
+  };
+  handleImage = (event) => {
+    this.setState({
+      image: event.target.value,
+    });
+  };
 
-  // handleAge = (event) =>{
-  //   this.setState({
-  //     aupairName: event.target.value
-  //   })
-  // }
+  handleAge = (event) =>{
+    this.setState({
+      aupair_name: event.target.value
+    })
+  }
 
-  // handleNationality = (event) =>{
-  //   this.setState({
-  //     startDate: event.target.value
-  //   })
-  // }
+  handleChildren = (event) =>{
+    this.setState({
+      number_of_children: event.target.value
+    })
+  }
   
-  // handleCertificate = (event) =>{
-  //   this.setState({
-  //     salary: event.target.value
-  //   })
-  // }
-
+  handleCertificate = (event) =>{
+    this.setState({
+      salary: event.target.value
+    })
+  }
+  
+  handleExperience = (event) =>{
+    this.setState({
+      start: event.target.value
+    })
+  }
 
   render() {
     return (
@@ -62,16 +80,16 @@ class ListingForm extends React.Component {
             name="name"
             placeholder="Enter your fullname..."
             className="input-text"
-            value={this.state.name}
+            value={this.state.fullname}
             onChange={this.handleName}
           />
           <br />
           <input
             type="text"
-            name="age"
+            name="aupair_name"
             placeholder="Enter Aupair's fullname..."
             className="input-text"
-            value={this.state.age}
+            value={this.state.aupair_name}
             onChange={this.handleAge}
           />
           <br />
@@ -80,20 +98,30 @@ class ListingForm extends React.Component {
             name="certificates"
             placeholder="Enter salary offer..."
             className="input-text"
-            value={this.state.certificates}
+            value={this.state.salary}
             onChange={this.handleCertificate}
           />
           <br />
 		  <input
+        
             type="text"
             name="experience"
             placeholder="Enter desired start date..."
             className="input-text"
-            value={this.state.years_of_experience}
+            value={this.state.start}
             onChange={this.handleExperience}
           />
           <br />
 		  <input
+            type="number"
+            name="image"
+            placeholder="Enter number of children..."
+            className="input-text"
+            value={this.state.number_of_children}
+            onChange={this.handleChildren}
+          />
+          <br />
+          <input
             type="text"
             name="image"
             placeholder="Upload a picture..."

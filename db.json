@@ -1,0 +1,18 @@
+{
+  "signup": [
+    {
+      "id": 1,
+      "name": "",
+      "email": "",
+      "password": ""
+    }
+  ],
+  "login": [
+    {
+      "name": "Selam Degefu",
+      "email": "admin@admin.com",
+      "password": "admin123",
+      "id": 1
+    }
+  ]
+}

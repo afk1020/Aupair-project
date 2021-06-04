@@ -1,7 +1,7 @@
 import React from 'react'
 import {Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink} from './NavbarElements'
 
-const Navbar = () => {
+const Navbar = (props) => {
 	return (
 		<>
 			<Nav>
@@ -22,12 +22,18 @@ const Navbar = () => {
 					<NavLink to="/create-listing" activestyle>
 						Create Listing
 					</NavLink>
+					<NavLink to="/Favorites" activestyle>
+						Favorite AuPairs
+					</NavLink>
 					<NavLink to="/sign-up" activestyle>
 						Sign Up
 					</NavLink>
 				</NavMenu>
 				<NavBtn>
-					<NavBtnLink to="/sign-in">Sign In</NavBtnLink>
+					{props.loggedIn ? `Welcome ${props.name}` : <NavBtnLink to="/sign-in">Sign In</NavBtnLink>}
+				</NavBtn>
+				<NavBtn>
+					{props.loggedIn ? <NavBtnLink onClick={props.Logout} to="/log-out">Log out</NavBtnLink> : ""}
 				</NavBtn>
 			</Nav>
 		</>
