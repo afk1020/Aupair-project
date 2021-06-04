@@ -53,7 +53,18 @@ handleHostFamilies = (hostFamilyData) => {
     hostFamilies: hostFamilyData
   })
 }
-
+handleFavoritesData = (data) => {
+  let collection=[]
+  data.map ((favorite)  => {
+    let x = favorite.aupair
+    collection.push(x)
+  
+  })
+  
+  console.log(collection)
+this.setState({
+  favorites: collection
+})}
 
 Login = details => {
  
@@ -78,6 +89,9 @@ componentDidMount = () => {
 
   axios.get(hostFamiliesURL, {crossDomain: true}, {withCredentials: true})
     .then(response => this.handleHostFamilies(response.data.family))
+
+    axios.get(favoriteURL, {crossDomain: true}, {withCredentials: true})
+    .then(response => this.handleFavoritesData(response.data.favorite))
 }
 
 addListing = (newListing) => {
